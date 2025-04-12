@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE REFORMER TIMES - Mahatma Jyotirao Phule Edition</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/Portrait%20of%20Mahatma%20Jyotirao%20Phule.png" />
+    <style>
+        /* Base Styles */
+        :root {
+            --ink-color: #2b2b2b;
+            --accent-color: #8b4513;
+            --headline-color: #2b2b2b;
+            --border-color: #8b4513;
+            --light-sepia: rgba(248, 240, 221, 0.7);
+            --dark-sepia: rgba(211, 199, 166, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @font-face {
+            font-family: 'OldNewspaper';
+            src: local('Times New Roman'), local('Times'), local('Georgia');
+            font-display: swap;
+        }
+        
+        body {
+            font-family: 'OldNewspaper', 'Times New Roman', Times, serif;
+            color: var(--ink-color);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            /* REPLACE WITH YOUR BACKGROUND IMAGE */
+           
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-color: #e0d5b8; /* Fallback color */
+        }
+        
+        /* Paper Texture - REPLACE WITH YOUR PAPER TEXTURE IMAGE */
+        .paper {
+            background-image: url('/paper.png');
+            background-color: rgba(245, 232, 201, 0.9);
+            background-blend-mode: multiply;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #a89e81;
+        }
+        
+        /* Paper Aging Effects */
+        .paper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(var(--dark-sepia) 0.5px, transparent 0.5px),
+                radial-gradient(var(--dark-sepia) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Burnt Corner Effect */
+        .paper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at top right, 
+                rgba(139, 69, 19, 0.2) 0%, 
+                rgba(139, 69, 19, 0.1) 30%, 
+                transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        /* Coffee Stain Splashes */
+        .splash {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(139, 69, 19, 0.3) 0%, 
+                rgba(139, 69, 19, 0.1) 60%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .splash-1 {
+            width: 120px;
+            height: 120px;
+            top: 250px;
+            left: 50px;
+            transform: rotate(15deg) scale(1);
+            animation: fadeIn 2s 0.5s forwards;
+        }
+        
+        .splash-2 {
+            width: 80px;
+            height: 80px;
+            bottom: 350px;
+            right: 80px;
+            transform: rotate(-10deg) scale(1.2);
+            animation: fadeIn 2s 1s forwards;
+        }
+        
+        .splash-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 100px;
+            left: 30%;
+            transform: rotate(5deg) scale(0.8);
+            animation: fadeIn 2s 1.5s forwards;
+        }
+        
+        /* Contribution Splashes */
+        .contribution-splash {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(139, 69, 19, 0.15) 0%, 
+                rgba(139, 69, 19, 0.05) 60%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .splash-education {
+            width: 200px;
+            height: 200px;
+            top: 50px;
+            left: 20%;
+            transform: rotate(5deg) scale(1);
+        }
+        
+        .splash-women {
+            width: 180px;
+            height: 180px;
+            top: 200px;
+            right: 15%;
+            transform: rotate(-8deg) scale(1.2);
+        }
+        
+        .splash-caste {
+            width: 220px;
+            height: 220px;
+            bottom: 150px;
+            left: 10%;
+            transform: rotate(12deg) scale(0.9);
+        }
+        
+        .splash-agriculture {
+            width: 160px;
+            height: 160px;
+            bottom: 100px;
+            right: 25%;
+            transform: rotate(-5deg) scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Fold Lines */
+        .fold-line {
+            position: absolute;
+            background: linear-gradient(to right, 
+                transparent, 
+                rgba(139, 69, 19, 0.1) 20%, 
+                rgba(139, 69, 19, 0.2) 50%, 
+                rgba(139, 69, 19, 0.1) 80%, 
+                transparent);
+            height: 1px;
+            width: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .fold-line-1 {
+            top: 33%;
+        }
+        
+        .fold-line-2 {
+            top: 66%;
+        }
+        
+        .vertical-fold {
+            position: absolute;
+            background: linear-gradient(to bottom, 
+                transparent, 
+                rgba(139, 69, 19, 0.1) 20%, 
+                rgba(139, 69, 19, 0.2) 50%, 
+                rgba(139, 69, 19, 0.1) 80%, 
+                transparent);
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        /* Newspaper Masthead */
+        .masthead {
+            text-align: center;
+            padding: 20px 10px;
+            border-bottom: 3px double var(--ink-color);
+            position: relative;
+            z-index: 3;
+        }
+        
+        .masthead::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* REPLACE WITH YOUR MASTHEAD BACKGROUND IMAGE */
+            background-image: url('/placeholder.svg?height=200&width=1200');
+            background-size: cover;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .newspaper-name {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: bold;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 2px;
+            color: var(--headline-color);
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .newspaper-motto {
+            font-style: italic;
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            margin: 5px 0 15px;
+            letter-spacing: 1px;
+        }
+        
+        .newspaper-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            border-top: 1px solid var(--ink-color);
+            border-bottom: 1px solid var(--ink-color);
+            padding: 5px 0;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .newspaper-vol {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 5px;
+        }
+        
+        .newspaper-price {
+            font-weight: bold;
+            padding: 0 5px;
+        }
+        
+        .newspaper-date {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 5px;
+        }
+        
+        /* Navigation */
+        .newspaper-nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: var(--dark-sepia);
+            border-bottom: 1px solid var(--ink-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+        
+        .newspaper-nav a {
+            color: var(--ink-color);
+            text-decoration: none;
+            padding: 5px 15px;
+            margin: 5px 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .newspaper-nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: var(--ink-color);
+            transition: all 0.3s ease;
+        }
+        
+        .newspaper-nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        .newspaper-nav a:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+        
+        /* Main Content */
+        .newspaper-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 20px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Front Page Layout */
+        .front-page {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Headlines */
+        .headline {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--headline-color);
+            text-transform: uppercase;
+        }
+        
+        .subheadline {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--ink-color);
+        }
+        
+        /* Article Styles */
+        .article {
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            background-color: var(--light-sepia);
+            padding: 20px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+        }
+        
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-headline {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            color: var(--headline-color);
+        }
+        
+        .article-subheadline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .article-meta {
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .article-content {
+            column-count: 1;
+            column-gap: 20px;
+            text-align: justify;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .article-content p {
+            margin-bottom: 15px;
+        }
+        
+        .article-content p:first-letter {
+            font-size: 3.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            float: left;
+            line-height: 0.8;
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        /* Newspaper Columns */
+        .newspaper-columns {
+            column-count: 1;
+            column-gap: 20px;
+            column-rule: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        
+        .newspaper-columns p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Images */
+        .article-image {
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #888;
+            filter: sepia(30%);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s ease;
+        }
+        
+        .article-image:hover {
+            filter: sepia(0%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .image-caption {
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-style: italic;
+            text-align: center;
+            padding: 8px;
+            background-color: var(--light-sepia);
+            border-top: 1px solid #888;
+        }
+        
+        /* Magnifying Glass Effect */
+        .magnify-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #888;
+        }
+        
+        .magnify-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: sepia(30%);
+            transition: transform 0.3s ease;
+        }
+        
+        .magnify-container::before {
+            content: "🔍";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            z-index: 5;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .magnify-container:hover::before {
+            opacity: 0;
+        }
+        
+        .magnify-container:hover img {
+            transform: scale(1.2);
+            filter: sepia(0%);
+        }
+        
+        /* Enhanced Interactive Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, 
+                transparent, 
+                var(--accent-color) 10%, 
+                var(--accent-color) 90%, 
+                transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            perspective: 1000px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--light-sepia);
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover::after {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -17px;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light-sepia);
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.2);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            transform: rotateY(10deg);
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: rotateY(0);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: -30px;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            background-color: var(--light-sepia);
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.2);
+            z-index: 2;
+        }
+        
+        .left .timeline-year {
+            right: 10px;
+        }
+        
+        .right .timeline-year {
+            left: 10px;
+        }
+        
+        .timeline-content p {
+            margin: 0;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        
+        /* Year markers on timeline */
+        .year-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            z-index: 3;
+        }
+        
+        .year-1820 { top: 0; }
+        .year-1850 { top: 33%; }
+        .year-1880 { top: 66%; }
+        
+        /* Newspaper Clipping Effect */
+        .clipping {
+            position: relative;
+            padding: 20px;
+            margin: 30px 0;
+           
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .clipping::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* REPLACE WITH YOUR BORDER TEXTURE IMAGE */
+            border: 15px solid transparent;
+            border-image: url('/placeholder.svg?height=100&width=100') 30 round;
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .clipping:hover::before {
+            opacity: 1;
+        }
+        
+        .clipping:hover {
+            transform: rotate(1deg) scale(1.02);
+        }
+        
+        /* Paper Tear Effect */
+        .torn-edge {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .torn-edge::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            /* REPLACE WITH YOUR TORN PAPER EDGE IMAGE */
+            background-image: url('/placeholder.svg?height=30&width=1400');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        
+        .torn-edge::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            /* REPLACE WITH YOUR TORN PAPER EDGE IMAGE */
+            background-image: url('/placeholder.svg?height=30&width=1400');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+        }
+        
+        /* Pull Quotes */
+        .pull-quote {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-style: italic;
+            line-height: 1.4;
+            padding: 20px 40px;
+            margin: 30px 0;
+            position: relative;
+            text-align: center;
+            color: var(--accent-color);
+            border-top: 2px solid var(--ink-color);
+            border-bottom: 2px solid var(--ink-color);
+        }
+        
+        .pull-quote::before,
+        .pull-quote::after {
+            
+            font-size: 4rem;
+            position: absolute;
+            color: rgba(139, 69, 19, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .pull-quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .pull-quote::after {
+           
+            bottom: -30px;
+            right: 10px;
+        }
+        
+        /* Newspaper Advertisements */
+        .advertisements {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .advertisement {
+            border: 2px solid #888;
+            padding: 15px;
+            text-align: center;
+            background-color: var(--light-sepia);
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .advertisement::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* REPLACE WITH YOUR ADVERTISEMENT TEXTURE */
+            background-image: url('/placeholder.svg?height=300&width=300');
+            background-size: cover;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .advertisement:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ad-headline {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .ad-content {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin-bottom: 15px;
+        }
+        
+        .ad-image {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto 15px;
+            border: 1px solid #888;
+            filter: sepia(50%);
+        }
+        
+        .ad-cta {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .ad-cta:hover {
+            background-color: var(--headline-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Gallery as Newspaper Photos */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            transform: rotate(var(--random-rotate));
+        }
+        
+        .gallery-item:nth-child(odd) {
+            --random-rotate: -2deg;
+        }
+        
+        .gallery-item:nth-child(even) {
+            --random-rotate: 2deg;
+        }
+        
+        .gallery-item:hover {
+            transform: rotate(0) scale(1.1);
+            z-index: 10;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: sepia(50%);
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            filter: sepia(0%);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Newspaper Fold Effect */
+        .fold-container {
+            position: relative;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+        
+        .fold-content {
+            background-color: var(--light-sepia);
+            padding: 20px;
+            transform-origin: top center;
+            transform: rotateX(-90deg);
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .fold-trigger {
+            background-color: var(--dark-sepia);
+            padding: 10px 20px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #888;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .fold-trigger::after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .fold-container:hover .fold-content {
+            transform: rotateX(0);
+            opacity: 1;
+            height: auto;
+        }
+        
+        .fold-container:hover .fold-trigger::after {
+            transform: rotate(180deg);
+        }
+        
+        /* Newspaper Classifieds */
+        .classifieds {
+            background-color: var(--light-sepia);
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px solid #888;
+        }
+        
+        .classifieds-title {
+            text-align: center;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--ink-color);
+            padding-bottom: 10px;
+        }
+        
+        .classifieds-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .classified-ad {
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            transition: all 0.3s ease;
+        }
+        
+        .classified-ad:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        .classified-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+        
+        /* Newspaper Footer */
+        .newspaper-footer {
+            background-color: var(--dark-sepia);
+            padding: 20px;
+            text-align: center;
+            border-top: 3px double var(--ink-color);
+            margin-top: 30px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .footer-title {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 15px;
+        }
+        
+        .footer-content {
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-nav {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-nav a {
+            color: var(--ink-color);
+            text-decoration: none;
+            margin: 5px 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        /* Stamp Effect */
+        .stamp {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            /* REPLACE WITH YOUR STAMP IMAGE */
+            background-image: url('/placeholder.svg?height=120&width=120');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            transform: rotate(-15deg);
+            z-index: 4;
+            transition: all 0.3s ease;
+        }
+        
+        .stamp-1 {
+            top: 100px;
+            right: 50px;
+        }
+        
+        .stamp-2 {
+            bottom: 200px;
+            left: 40px;
+            transform: rotate(10deg);
+        }
+        
+        .stamp:hover {
+            opacity: 0.8;
+            transform: rotate(0);
+        }
+        
+        /* Typewriter Effect - No Blinking */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end) forwards;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        /* Page Turn Effect */
+        .page-turn {
+            position: relative;
+            perspective: 1500px;
+            margin: 40px 0;
+            min-height: 400px;
+        }
+        
+        .page-front, 
+        .page-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.8s ease;
+            background-color: var(--light-sepia);
+            padding: 20px;
+            border: 1px solid #888;
+        }
+        
+        .page-back {
+            transform: rotateY(180deg);
+        }
+        
+        .page-turn:hover .page-front {
+            transform: rotateY(180deg);
+        }
+        
+        .page-turn:hover .page-back {
+            transform: rotateY(0);
+        }
+        
+        /* Literary Contributions Section */
+        .literary-contributions {
+            position: relative;
+            padding: 30px;
+            background-color: var(--light-sepia);
+            border: 1px solid var(--border-color);
+            margin: 40px 0;
+        }
+        
+        .book-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book-title {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        
+        .book-year {
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        }
+        
+        .book-description {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.5;
+        }
+        
+        .book-impact {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+        
+        /* Developer Section */
+        .developer-section {
+            position: relative;
+            padding: 40px 20px;
+            background-color: var(--light-sepia);
+            margin: 40px 0;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .developer-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .developer-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .developer-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: sepia(20%);
+        }
+        
+        .developer-image-container:hover .developer-image {
+            filter: sepia(0%);
+            transform: scale(1.1);
+        }
+        
+        .developer-name {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--headline-color);
+        }
+        
+        .developer-details {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .developer-bio {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 40px;
+            border-radius: 15%;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            background-color: var(--headline-color);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 576px) {
+            /* Small devices (landscape phones) */
+            .article-content {
+                column-count: 2;
+            }
+            
+            .newspaper-columns {
+                column-count: 2;
+            }
+            
+            .advertisements {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .classifieds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .book-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            /* Medium devices (tablets) */
+            .front-page {
+                grid-template-columns: 2fr 1fr;
+            }
+            
+            .article-content {
+                column-count: 2;
+            }
+            
+            .newspaper-columns {
+                column-count: 2;
+            }
+            
+            .full-width-article .article-content {
+                column-count: 3;
+            }
+            
+            .advertisements {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .classifieds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .book-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .developer-profile {
+                flex-direction: row;
+                text-align: left;
+                gap: 30px;
+            }
+            
+            .developer-image-container {
+                flex-shrink: 0;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            /* Large devices (desktops) */
+            .article-content {
+                column-count: 2;
+            }
+            
+            .newspaper-columns {
+                column-count: 3;
+            }
+            
+            .full-width-article .article-content {
+                column-count: 3;
+            }
+            
+            .advertisements {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .classifieds-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .book-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            /* Extra large devices (4K) */
+            .paper {
+                max-width: 1800px;
+            }
+            
+            .article-content {
+                column-count: 2;
+            }
+            
+            .newspaper-columns {
+                column-count: 3;
+            }
+            
+            .full-width-article .article-content {
+                column-count: 4;
+            }
+            
+            .advertisements {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .classifieds-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .book-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper">
+        <!-- Decorative Elements -->
+        <div class="splash splash-1"></div>
+        <div class="splash splash-2"></div>
+        <div class="splash splash-3"></div>
+
+        
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1 class="newspaper-name">THE REFORMER TIMES</h1>
+            <p class="newspaper-motto">Illuminating Minds, Inspiring Change</p>
+            <div class="newspaper-info">
+                <span class="newspaper-vol">VOL-I</span>
+                <span class="newspaper-date">PUNE, INDIA - APRIL 11, 1885</span>
+                <span class="newspaper-price">By Arpan Saini</span>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav class="newspaper-nav">
+            <a href="#front-page">Front Page</a>
+            <a href="#life-work">Life & Work</a>
+            <a href="#contributions">Contributions</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#literary">Literary Works</a>
+            <a href="#gallery">Photographs</a>
+            <a href="#legacy">Legacy</a>
+            <a href="#developer">Developer</a>
+        </nav>
+        
+        <!-- Main Content -->
+        <div class="newspaper-content">
+            <!-- Front Page -->
+            <section id="front-page" class="front-page">
+                <div class="main-story">
+                    <h2 class="headline">MAHATMA JYOTIRAO PHULE</h2>
+                    <h3 class="subheadline">The Visionary Reformer Transforming Indian Society</h3>
+                    
+                    <div class="magnify-container">
+                        <img src="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/Portrait%20of%20Mahatma%20Jyotirao%20Phule.png" alt="Portrait of Mahatma Jyotirao Phule">
+                    </div>
+                    
+                    <div class="article-content">
+                        <p>Mahatma Jyotirao Govindrao Phule, born on April 11, 1827, stands as one of India's most influential social reformers, thinkers, and writers. His revolutionary work spans education, agriculture, caste system reform, women's empowerment, and the transformation of Hindu family life.</p>
+                        
+                        <p>Born into a family of the Mali caste, traditionally occupied as gardeners and vegetable farmers, Phule has risen to prominence through his tireless efforts to create a more equitable society. He and his wife, Savitribai Phule, have pioneered universal school education in India, being among the first indigenous people to propose and implement such a system.</p>
+                        
+                        <p>Phule's most notable achievement has been his dedication to educating women and those from lower castes. In 1848, alongside his wife Savitribai, he opened the first school for girls in Pune, challenging centuries-old traditions that denied education to women. His revolutionary approach to social reform has earned him the title of 'Mahatma' (Great Soul), bestowed upon him by Maharashtrian social activist Vithalrao Krishnaji Vandekar.</p>
+                        
+                        <p>Beyond education, Phule has initiated widow remarriage and established homes for upper caste widows and newborn infants, working diligently to prevent female infanticide. His holistic approach to social reform addresses the interconnected issues of caste discrimination, gender inequality, and educational disparity.</p>
+                    </div>
+                </div>
+                
+                <div class="side-stories">
+                    <div class="article">
+                        <h3 class="article-headline">SATYASHODHAK SAMAJ GAINS MOMENTUM</h3>
+                        <p class="article-meta">By Our Special Correspondent | April 10, 1885</p>
+                        
+                        <p>The Satyashodhak Samaj (Society of Truth Seekers), founded by Mahatma Jyotirao Phule in 1873, continues to gain significant support across Maharashtra. The organization, dedicated to liberating lower castes from exploitation and oppression, has established numerous branches throughout the region.</p>
+                        
+                        <p>Recent gatherings have attracted hundreds of supporters, signaling growing momentum for the movement that promotes rational thinking and rejects the need for priests to mediate between God and devotees.</p>
+                        
+                        <div class="article-image">
+                            <img src="/Members of Satyashodhak Samaj at a recent gathering in Pune.jpg" alt="Meeting of Satyashodhak Samaj">
+                            <div class="image-caption">Members of Satyashodhak Samaj at a recent gathering in Pune</div>
+                        </div>
+                    </div>
+                    
+                    <div class="fold-container">
+                        <div class="fold-trigger">READ: Phule's Vision for Education</div>
+                        <div class="fold-content">
+                            <p>Mahatma Phule's educational philosophy centers on universal access to knowledge, regardless of caste or gender. He believes education is the primary tool for social emancipation and the creation of a just society.</p>
+                            <p>"The lack of learning is nothing but gross bestiality. It is through the acquisition of knowledge that one loses their lower status and achieves the higher one," Phule has often stated in his public addresses.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Life and Work Section -->
+            <section id="life-work" class="torn-edge">
+                <h2 class="headline">THE LIFE & WORK OF A VISIONARY</h2>
+                <h3 class="subheadline">From Humble Beginnings to Revolutionary Change</h3>
+                
+                <div class="clipping">
+                    <div class="article-image">
+                        <img src="/Jyotirao and Savitribai Phule, pioneers of women's education in India.png"  alt="Jyotirao and Savitribai Phule">
+                        <div class="image-caption">Jyotirao Phule with his wife Savitribai, pioneers of women's education in India</div>
+                    </div>
+                    
+                    <div class="newspaper-columns">
+                        <p>Mahatma Jyotirao Phule's journey from humble beginnings to becoming one of India's most influential social reformers is a testament to his extraordinary vision and determination. Born on April 11, 1827, in Satara district of Maharashtra to a family belonging to the Mali (gardener) caste, Phule experienced firsthand the injustices of the caste system.</p>
+                        
+                        <p>His early education at the Scottish Mission's High School in Pune proved transformative. It was here that he was introduced to Western liberal thought and began to develop his critical perspective on Indian society. A pivotal moment in his life came when he was invited to attend a Brahmin friend's wedding but was later humiliated and segregated due to his lower caste status.</p>
+                        
+                        <p>This incident, along with his reading of Thomas Paine's 'Rights of Man', ignited his passion for social reform. He recognized that the caste system was not divinely ordained but a man-made construct designed to maintain social hierarchy and exploitation.</p>
+                        
+                        <p>In 1840, Phule enrolled in the Scottish Mission's High School in Pune, where he completed his education. This exposure to Western education and ideas significantly influenced his worldview and reform agenda.</p>
+                        
+                        <p>His marriage to Savitribai, whom he personally educated, marked the beginning of a remarkable partnership in social reform. Together, they opened the first indigenous girls' school in Pune in 1848, challenging the prevailing notion that women were unworthy of education.</p>
+                    </div>
+                </div>
+                
+                <div class="pull-quote">
+                    The lack of education leads to lack of wisdom, which leads to lack of morals, which leads to lack of progress, which leads to lack of money, which leads to the oppression of the lower classes.
+                </div>
+            </section>
+            
+            <!-- Enhanced Interactive Timeline -->
+            <section id="timeline" class="torn-edge">
+                <h2 class="headline">CHRONOLOGY OF A REFORMER'S JOURNEY</h2>
+                <h3 class="subheadline typewriter">The Path of Revolutionary Change</h3>
+                
+                <div class="timeline">
+                    <div class="year-marker year-1820">1820s</div>
+                    <div class="year-marker year-1850">1850s</div>
+                    <div class="year-marker year-1880">1880s</div>
+                    
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1827</div>
+                            <p>Born on April 11 in Satara district of Maharashtra to a family belonging to the Mali (gardener) caste.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1840</div>
+                            <p>Enrolled in the Scottish Mission's High School in Pune, where he completed his education.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1848</div>
+                            <p>Along with his wife Savitribai, opened the first indigenous girls' school in Pune, challenging centuries of tradition.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1851</div>
+                            <p>Opened a school for children from the then untouchable castes like Mahar and Mang, providing unprecedented educational opportunities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1854</div>
+                            <p>Established an orphanage to prevent infanticide and provide shelter to pregnant widows, addressing critical social issues.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1873</div>
+                            <p>Founded the Satyashodhak Samaj (Society of Truth Seekers) to attain equal rights for people from lower castes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1888</div>
+                            <p>Conferred with the title of 'Mahatma' (Great Soul) by Maharashtrian social activist Vithalrao Krishnaji Vandekar.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1890</div>
+                            <p>Passed away on November 28 in Pune, leaving behind a legacy of social reform and education.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Literary Works Section -->
+            <section id="literary" class="torn-edge">
+                <h2 class="headline">LITERARY MASTERPIECES</h2>
+                <h3 class="subheadline">The Powerful Pen of a Social Revolutionary</h3>
+                
+                <div class="literary-contributions">
+                    <div class="book-list">
+                        <div class="book-item">
+                            <h4 class="book-title">Tritiya Ratna (The Third Jewel)</h4>
+                            <div class="book-year">1855</div>
+                            <p class="book-description">This pioneering work, written in the form of a dialogue, presents a scathing critique of the caste system and Brahminical practices. Phule challenges the religious texts that were used to justify social inequality and presents rational arguments against caste-based discrimination.</p>
+                            <p class="book-impact"><strong>Impact:</strong> This work marked Phule as a radical thinker who dared to question established religious authority. It laid the intellectual foundation for his later social reform movements and inspired many to examine religious texts critically rather than accepting them blindly.</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <h4 class="book-title">Gulamgiri (Slavery)</h4>
+                            <div class="book-year">1873</div>
+                            <p class="book-description">Phule's most famous work draws parallels between the condition of lower castes in India and the slavery system in America. Dedicated to the "good people of the United States" for their abolition of slavery, this book exposes how the caste system functioned as a form of social slavery, with religious texts and traditions used to maintain Brahminical dominance.</p>
+                            <p class="book-impact"><strong>Impact:</strong> This revolutionary text reframed the understanding of caste oppression by placing it in a global context of human rights and freedom. It became a foundational text for anti-caste movements and continues to inspire social justice advocates today.</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <h4 class="book-title">Shetkarayacha Aasud (Cultivator's Whipcord)</h4>
+                            <div class="book-year">1881</div>
+                            <p class="book-description">This groundbreaking work focuses on the exploitation of farmers by landlords, moneylenders, and the colonial government. Phule meticulously documents the economic hardships faced by cultivators and proposes reforms to improve their condition, including fair taxation, irrigation projects, and protection from predatory lending practices.</p>
+                            <p class="book-impact"><strong>Impact:</strong> This work established Phule as an advocate for farmers' rights and economic justice. It was one of the earliest systematic analyses of agrarian issues in colonial India and influenced later peasant movements and agricultural reforms.</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <h4 class="book-title">Sarvajanik Satya Dharma Pustak (The Book of True Faith)</h4>
+                            <div class="book-year">1891</div>
+                            <p class="book-description">Published posthumously, this work presents Phule's vision of a universal religion based on truth, rationality, and ethical principles rather than superstition and ritual. He advocates for a spiritual approach that emphasizes moral conduct and social justice over hierarchical religious structures.</p>
+                            <p class="book-impact"><strong>Impact:</strong> This final work completed Phule's intellectual journey by offering an alternative spiritual framework that could unite people across social divides. It influenced later religious reform movements and continues to inspire those seeking to reconcile spirituality with social justice.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pull-quote">
+                        They want the Shudras to remain ignorant so that they may go on treating them as beasts of burden.
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contributions Section -->
+            <section id="contributions" class="full-width-article torn-edge">
+                <h2 class="headline">REVOLUTIONARY CONTRIBUTIONS</h2>
+                <h3 class="subheadline">How One Man's Vision is Reshaping Indian Society</h3>
+                
+                <!-- Splash effects for contributions -->
+                <div class="contribution-splash splash-education"></div>
+                <div class="contribution-splash splash-women"></div>
+                <div class="contribution-splash splash-caste"></div>
+                <div class="contribution-splash splash-agriculture"></div>
+                
+                <div class="article-content">
+                    <p>Mahatma Jyotirao Phule's contributions to Indian society are both profound and far-reaching. His multifaceted approach to social reform has addressed the interconnected issues of caste discrimination, gender inequality, and educational disparity, creating a comprehensive framework for societal transformation.</p>
+                    
+                    <p>At the heart of Phule's reform agenda is his unwavering commitment to education. Recognizing education as the primary tool for social emancipation, he has worked tirelessly to make it accessible to all, regardless of caste or gender. His establishment of the first girls' school in 1848, along with schools for children from untouchable castes, has challenged centuries-old traditions and opened new possibilities for marginalized communities.</p>
+                    
+                    <p>Phule's critique of the caste system is equally significant. Through his organization, Satyashodhak Samaj, he has provided a platform for lower castes to assert their rights and dignity. His writings, particularly "Gulamgiri" (Slavery), have exposed the exploitative nature of the caste system and called for its abolition.</p>
+                    
+                    <p>Women's empowerment forms another crucial aspect of Phule's reform agenda. By advocating for women's education, widow remarriage, and establishing homes for widows and orphans, he has addressed the specific challenges faced by women in Indian society. His partnership with his wife, Savitribai, exemplifies his belief in gender equality and collaborative social reform.</p>
+                    
+                    <p>Phule's contributions extend to agriculture as well. His work "Shetkaryacha Asud" (Cultivator's Whipcord) highlights the plight of farmers and advocates for their rights. His holistic approach to social reform recognizes the interconnectedness of various social, economic, and cultural factors in perpetuating inequality.</p>
+                    
+                    <p>Through his writings, activism, and institutional initiatives, Mahatma Jyotirao Phule has laid the foundation for a more equitable and just society. His legacy continues to inspire social reformers and activists across India, making him one of the most influential figures in Indian social history.</p>
+                </div>
+                
+                <div class="page-turn">
+                    <div class="page-front">
+                        <h3 class="article-headline">EDUCATIONAL INITIATIVES</h3>
+                        <p>Hover to discover Phule's revolutionary educational work</p>
+                    </div>
+                    <div class="page-back">
+                        <h3>Pioneering Educational Reforms:</h3>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin: 15px 0;">
+                            <li><strong>First Girls' School (1848)</strong> - Established with Savitribai Phule in Pune, breaking gender barriers in education</li>
+                            <li><strong>Schools for Untouchables (1851)</strong> - Created educational opportunities for children from marginalized castes</li>
+                            <li><strong>Night Schools for Working Adults (1855)</strong> - Provided education to laborers who worked during the day</li>
+                            <li><strong>Teacher Training Programs</strong> - Trained women and lower caste individuals to become educators</li>
+                            <li><strong>Progressive Curriculum</strong> - Developed teaching materials that promoted critical thinking and questioned social hierarchies</li>
+                        </ul>
+                        <p>These initiatives formed the cornerstone of Phule's social revolution, creating pathways for the marginalized to achieve dignity and self-determination through knowledge.</p>
+                    </div>
+                </div>
+                
+
+            </section>
+            
+            <!-- Gallery Section -->
+            <section id="gallery" class="torn-edge">
+                <h2 class="headline">PHOTOGRAPHIC GALLERY</h2>
+                <h3 class="subheadline typewriter">Capturing Moments of a Revolutionary Life</h3>
+                
+                <div class="photo-gallery">
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/Portrait%20of%20Mahatma%20Jyotirao%20Phule.png" alt="Portrait of Jyotirao Phule">
+                        <div class="gallery-caption">Portrait of Mahatma Jyotirao Phule</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="/Jyotirao and Savitribai Phule, pioneers of women's education in India.png" alt="Savitribai and Jyotirao Phule">
+                        <div class="gallery-caption">Savitribai and Jyotirao Phule</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/The%20first%20girls'%20school%20established%20by%20the%20Phules%20in%20Pune%2C%201848.png" alt="First Girls' School in Pune">
+                        <div class="gallery-caption">First Girls' School established by the Phules in Pune</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/A%20meeting%20of%20the%20Satyashodhak%20Samaj%2C%20founded%20by%20Phule%20in%201873.png" alt="Satyashodhak Samaj Meeting">
+                        <div class="gallery-caption">A meeting of the Satyashodhak Samaj</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="/Cover of Phule's book 'Gulamgiri' (Slavery).jpeg" alt="Phule's Book Gulamgiri">
+                        <div class="gallery-caption">Cover of Phule's book 'Gulamgiri' (Slavery)</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/ritu-singh-4002/Mahatma-Jyotiba-Phule/refs/heads/main/images/Memorial%20statue%20of%20Mahatma%20Jyotirao%20Phule%20in%20Maharashtra.jpeg" alt="Memorial of Mahatma Phule">
+                        <div class="gallery-caption">Memorial of Mahatma Jyotirao Phule in Pune</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Legacy Section -->
+            <section id="legacy" class="torn-edge">
+                <h2 class="headline">THE ENDURING LEGACY</h2>
+                <h3 class="subheadline">How Phule's Vision Continues to Shape Modern India</h3>
+                
+                <div class="newspaper-columns">
+                    <p>The legacy of Mahatma Jyotirao Phule extends far beyond his lifetime, continuing to influence social reform movements, educational policies, and anti-caste activism in modern India. His pioneering work in education, particularly for women and lower castes, laid the foundation for more inclusive educational systems that we see today.</p>
+                    
+                    <p>Numerous educational institutions across India bear his name, including the Mahatma Phule Agricultural University in Rahuri, Maharashtra, and Mahatma Jyotiba Phule Rohilkhand University in Bareilly, Uttar Pradesh. These institutions serve as living testaments to his educational vision and continue to provide opportunities for students from diverse backgrounds.</p>
+                    
+                    <p>Phule's critique of the caste system and his advocacy for social equality have inspired generations of social reformers and political leaders. Dr. B.R. Ambedkar, the architect of India's constitution, acknowledged Phule as one of his three gurus or masters, highlighting the profound influence of Phule's ideas on subsequent anti-caste movements.</p>
+                    
+                    <p>The Government of India has recognized his contributions by issuing a commemorative stamp in his honor in 1977. The Mahatma Phule Museum in Pune, formerly the Phule Wada (the house where the Phules lived), is now a national monument, preserving his legacy for future generations.</p>
+                    
+                    <p>Perhaps most significantly, Phule's emphasis on education as a tool for social emancipation continues to resonate in contemporary discussions about educational access and equity. His holistic approach to social reform, addressing the interconnected issues of caste, gender, and education, provides a valuable framework for addressing social inequalities in the present day.</p>
+                </div>
+                
+                <div class="classifieds">
+                    <h3 class="classifieds-title">TRIBUTES & TESTIMONIALS</h3>
+                    <div class="classifieds-grid">
+                        <div class="classified-ad">
+                            <h4 class="classified-title">Educational Vision</h4>
+                            <p>"Phule's educational philosophy remains relevant today. His emphasis on critical thinking and questioning established norms is exactly what modern education should aspire to." - Prof. Rajendra Singh, Education Reformer</p>
+                        </div>
+                        
+                        <div class="classified-ad">
+                            <h4 class="classified-title">Women's Empowerment</h4>
+                            <p>"The Phules' work in women's education was revolutionary. They understood that societal transformation requires the empowerment of women." - Smt. Lakshmi Devi, Women's Rights Activist</p>
+                        </div>
+                        
+                        <div class="classified-ad">
+                            <h4 class="classified-title">Anti-Caste Movement</h4>
+                            <p>"Satyashodhak Samaj provided a platform for lower castes to assert their dignity. This organizational approach to social reform was Phule's unique contribution." - Dr. Anand Teltumbde, Scholar</p>
+                        </div>
+                        
+                        <div class="classified-ad">
+                            <h4 class="classified-title">Agricultural Reforms</h4>
+                            <p>"Phule's advocacy for farmers' rights in 'Shetkaryacha Asud' shows his understanding of economic factors in social inequality." - Shri Devendra Fadnavis, Political Leader</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pull-quote">
+                    If you have acquired knowledge, it is your duty to spread it among the masses.
+                </div>
+            </section>
+            
+            <!-- Developer Section -->
+            <section id="developer" class="torn-edge">
+                <h2 class="headline">THE DEVELOPER'S CORNER</h2>
+                <h3 class="subheadline">The Mind Behind This Digital Tribute</h3>
+                
+                <div class="developer-section">
+                    <div class="developer-profile">
+                        <div class="developer-image-container">
+                            <img src="/arpan.jpg" alt="Developer Portrait" class="developer-image">
+                        </div>
+                        
+                        <div class="developer-info">
+                            <h3 class="developer-name">Arpan Saini</h3>
+                            <p class="developer-details"> Full Stack Web Developer  & Designer | Machine Learning  </p>
+                            
+                            <div class="developer-bio">
+                                <p> I'm Arpan Saini, a B.Tech student specializing in Information Technology at Rajkiya Engineering College Bijnor. I'm on a mission to transform code into digital masterpieces.
+                                 </div>
+                            
+                            <div class="social-links">
+                                <a href="https://github.com/arpan-kumar-saini" class="social-link" aria-label="GitHub">GitHub</a>
+                                <a href="https://www.linkedin.com/in/arpansaini/" class="social-link" aria-label="LinkedIn">Linkdin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="newspaper-footer">
+            <h3 class="footer-title">THE REFORMER TIMES</h3>
+            <p class="footer-content">A tribute to Mahatma Jyotirao Phule, a visionary who dedicated his life to social reform, education, and equality</p>
+            
+            <div class="footer-nav">
+                <a href="#front-page">Front Page</a>
+                <a href="#life-work">Life & Work</a>
+                <a href="#contributions">Contributions</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#literary">Literary Works</a>
+                <a href="#gallery">Photographs</a>
+                <a href="#legacy">Legacy</a>
+                <a href="#developer">Developer</a>
+            </div>
+            
+            <p>Published in REC Bijnor | Editor: Arpan Saini | Forever For Arin </p>
+        </footer>
+    </div>
+</body>
+</html>
